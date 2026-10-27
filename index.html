@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherNow – Real-Time Weather</title>
+    <meta name="description"
+        content="Search real-time weather information for any city worldwide. Get temperature, humidity, wind speed, and weather conditions instantly." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Animated background blobs -->
+    <div class="bg-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">🌤</span>
+                <h1>WeatherNow</h1>
+            </div>
+            <p class="tagline">Real-time weather at your fingertips</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section" aria-label="City search">
+            <form class="search-form" id="search-form" role="search">
+                <div class="search-input-wrap">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input type="text" id="city-input" class="search-input" placeholder="Search for a city…"
+                        autocomplete="off" aria-label="City name" spellcheck="false" />
+                </div>
+                <button type="submit" class="search-btn" id="search-btn">Search</button>
+            </form>
+        </section>
+
+        <!-- Recent Searches -->
+        <section class="recent-section" id="recent-section" aria-label="Recent searches" style="display:none;">
+            <h2 class="recent-title">Recent Searches</h2>
+            <ul class="recent-list" id="recent-list" role="list"></ul>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div class="loading-wrap" id="loading-wrap" style="display:none;" aria-live="polite"
+            aria-label="Loading weather data">
+            <div class="spinner"></div>
+            <p class="loading-text">Fetching weather data…</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-card" id="error-card" style="display:none;" role="alert">
+            <span class="error-icon">⚠️</span>
+            <p class="error-message" id="error-message">City not found. Please try again.</p>
+        </div>
+
+        <!-- Weather Card -->
+        <section class="weather-card" id="weather-card" style="display:none;" aria-live="polite"
+            aria-label="Weather information">
+
+            <!-- Top: City + Icon -->
+            <div class="weather-top">
+                <div class="city-info">
+                    <h2 class="city-name" id="city-name">--</h2>
+                    <p class="weather-desc" id="weather-desc">--</p>
+                </div>
+                <div class="weather-icon-wrap">
+                    <img src="" alt="Weather icon" class="weather-icon" id="weather-icon" />
+                </div>
+            </div>
+
+            <!-- Temperature -->
+            <div class="temp-section">
+                <span class="temp-value" id="temp-value">--</span>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-icon" aria-hidden="true">💧</span>
+                    <div>
+                        <p class="stat-label">Humidity</p>
+                        <p class="stat-value" id="humidity">--%</p>
+                    </div>
+                </div>
+                <div class="stat-divider" aria-hidden="true"></div>
+                <div class="stat-item">
+                    <span class="stat-icon" aria-hidden="true">💨</span>
+                    <div>
+                        <p class="stat-label">Wind Speed</p>
+                        <p class="stat-value" id="wind-speed">-- km/h</p>
+                    </div>
+                </div>
+                <div class="stat-divider" aria-hidden="true"></div>
+                <div class="stat-item">
+                    <span class="stat-icon" aria-hidden="true">🌡️</span>
+                    <div>
+                        <p class="stat-label">Feels Like</p>
+                        <p class="stat-value" id="feels-like">--°</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
